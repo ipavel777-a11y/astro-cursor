@@ -1,0 +1,62 @@
+---
+---
+
+<div class="counter" data-counter>
+	<button type="button" data-decrement aria-label="Decrement">−</button>
+	<output data-count>0</output>
+	<button type="button" data-increment aria-label="Increment">+</button>
+</div>
+
+<style>
+	.counter {
+		display: inline-flex;
+		align-items: center;
+		gap: 1rem;
+		margin-top: 1rem;
+	}
+
+	button {
+		width: 3rem;
+		height: 3rem;
+		font-size: 1.5rem;
+		border-radius: 12px;
+		border: 1px solid var(--border);
+		background: var(--bg);
+		color: var(--text);
+		cursor: pointer;
+		transition: transform 0.05s ease, border-color 0.15s ease;
+	}
+
+	button:hover {
+		border-color: var(--accent);
+	}
+
+	button:active {
+		transform: scale(0.94);
+	}
+
+	output {
+		min-width: 3rem;
+		font-size: 2rem;
+		font-variant-numeric: tabular-nums;
+		font-weight: 700;
+	}
+</style>
+
+<script>
+	document.querySelectorAll<HTMLElement>('[data-counter]').forEach((root) => {
+		const output = root.querySelector<HTMLOutputElement>('[data-count]');
+		let count = 0;
+		const render = () => {
+			if (output) output.textContent = String(count);
+		};
+		root.querySelector('[data-increment]')?.addEventListener('click', () => {
+			count += 1;
+			render();
+		});
+		root.querySelector('[data-decrement]')?.addEventListener('click', () => {
+			count -= 1;
+			render();
+		});
+	});
+</script>
