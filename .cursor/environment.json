@@ -1,0 +1,11 @@
+{
+  "name": "astro-cursor",
+  "install": "npm install",
+  "terminals": [
+    {
+      "name": "astro-dev",
+      "command": "npm run dev -- --host 0.0.0.0 --port 4321",
+      "description": "Astro dev server on http://localhost:4321 with hot module reloading."
+    }
+  ]
+}

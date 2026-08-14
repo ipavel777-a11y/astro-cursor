@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Counter from '../components/Counter.astro';
+
+const features = [
+	{
+		title: 'Zero JS by default',
+		body: 'Astro ships static HTML and only hydrates the interactive islands you opt into.',
+	},
+	{
+		title: 'Component islands',
+		body: 'Mix and match UI frameworks, or stick with plain Astro components like this page.',
+	},
+	{
+		title: 'Fast dev loop',
+		body: 'Hot module reloading keeps the browser in sync while you edit content and styles.',
+	},
+];
+
+const buildTime = new Date().toISOString();
+---
+
+<Layout title="astro-cursor">
+	<main>
+		<section class="hero">
+			<span class="badge">astro-cursor</span>
+			<h1>Your Astro dev environment is live.</h1>
+			<p class="lede">
+				This page is served by the Astro dev server configured for Cursor Cloud Agents.
+				Edit <code>src/pages/index.astro</code> and the browser reloads instantly.
+			</p>
+			<p class="meta">Rendered at build/request time: <time>{buildTime}</time></p>
+		</section>
+
+		<section class="features">
+			{
+				features.map((feature) => (
+					<article class="card">
+						<h2>{feature.title}</h2>
+						<p>{feature.body}</p>
+					</article>
+				))
+			}
+		</section>
+
+		<section class="interactive">
+			<h2>Interactive island</h2>
+			<p>The counter below is a small client-side island, proving hydration works end to end.</p>
+			<Counter />
+		</section>
+	</main>
+</Layout>
